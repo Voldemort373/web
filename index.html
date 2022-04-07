@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AYUSHIIII</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        background: #16161d;
+        overflow: hidden;
+        height: 100vh;
+        opacity: 1;
+      }
+
+      .container {
+        width: 400px;
+        margin: 100px auto;
+        position: relative;
+        overflow: hidden;
+      }
+
+      img {
+        width: 100%;
+        transform: scale(1.5);
+        filter: blur(100px);
+        opacity: 0;
+        animation: reveal 3s;
+        animation-fill-mode: forwards;
+      }
+      /* OVERLAYS */
+      .overlays {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .overlay:nth-child(1) {
+        transform: scaleX(0);
+        transform-origin: 100% 50%;
+        animation: overlay-1 3s ease-in-out;
+      }
+      .overlay:nth-child(2) {
+        transform: scaleX(0);
+        transform-origin: 0% 50%;
+        animation: overlay-2 3s ease-in-out;
+      }
+      .overlay {
+        background: #16161d;
+        flex: 1;
+        animation-fill-mode: forwards;
+      }
+
+      .fade_out {
+        opacity: 0;
+      }
+      .fade_transition {
+        transition: all 1s;
+      }
+
+      @keyframes reveal {
+        50% {
+          transform: scale(1.5);
+          opacity: 0;
+        }
+
+        51% {
+          transform: scale(1.5) rotate(20deg);
+          opacity: 1;
+        }
+        80% {
+          filter: blur(10px);
+        }
+        100% {
+          transform: scale(1);
+          opacity: 1;
+          filter: blur(0);
+        }
+      }
+
+      @keyframes overlay-1 {
+        0% {
+          transform: scaleX(0);
+          transform-origin: 100% 50%;
+        }
+        50% {
+          transform: scaleX(1);
+          transform-origin: 100% 50%;
+        }
+        51% {
+          transform: scaleX(1);
+          transform-origin: 0% 50%;
+        }
+        100% {
+          transform: scaleX(0);
+          transform-origin: 0% 50%;
+        }
+      }
+
+      @keyframes overlay-2 {
+        0% {
+          transform: scaleX(0);
+          transform-origin: 0% 50%;
+        }
+        50% {
+          transform: scaleX(1);
+          transform-origin: 0% 50%;
+        }
+        51% {
+          transform: scaleX(1);
+          transform-origin: 100% 50%;
+        }
+        100% {
+          transform: scaleX(0);
+          transform-origin: 100% 50%;
+        }
+      }
+      /* Basic styles */
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+
+      :root {
+        --bg-color: #d8d8d8;
+      }
+
+      h1 {
+        font-size: 3em;
+        font-weight: normal;
+      }
+
+      /* title styles */
+      .home-title span {
+        position: relative;
+        overflow: hidden;
+        display: block;
+        line-height: 1.2;
+      }
+
+      .home-title span::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 100%;
+        height: 100%;
+        background: white;
+        animation: a-ltr-after 2s cubic-bezier(0.77, 0, 0.18, 1) forwards;
+        transform: translateX(-101%);
+      }
+
+      .home-title span::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 100%;
+        height: 100%;
+        background: var(--bg-color);
+        animation: a-ltr-before 2s cubic-bezier(0.77, 0, 0.18, 1) forwards;
+        transform: translateX(0);
+      }
+
+      .home-title > span {
+        color: white;
+        text-align: center;
+      }
+      .home-title span:nth-of-type(1)::before,
+      .home-title span:nth-of-type(1)::after {
+        animation-delay: 1s;
+      }
+
+      .home-title span:nth-of-type(2)::before,
+      .home-title span:nth-of-type(2)::after {
+        animation-delay: 1.5s;
+      }
+
+      @keyframes a-ltr-after {
+        0% {
+          transform: translateX(-100%);
+        }
+        100% {
+          transform: translateX(101%);
+        }
+      }
+
+      @keyframes a-ltr-before {
+        0% {
+          transform: translateX(0);
+        }
+        100% {
+          transform: translateX(200%);
+        }
+      }
+    </style>
+  </head>
+  <body class="fade_out fade_transition">
+    <div class="container">
+      <img src="./Ayushi.png" alt="Ayushi" />
+
+      <div class="overlays">
+        <div class="overlay"></div>
+        <div class="overlay"></div>
+      </div>
+    </div>
+    <h1 class="home-title">
+      <span>HELLO AYUSHIIII</span>
+      <span>🌚🌚🌚🌚</span>
+    </h1>
+    <script>
+      const body = document.querySelector("body");
+
+      const fade = () => {
+        setTimeout(() => {
+          body.classList.toggle("fade_out");
+        }, 2200);
+      };
+      body.addEventlistener("load", fade());
+    </script>
+  </body>
+</html>
